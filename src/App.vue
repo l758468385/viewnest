@@ -1,5 +1,5 @@
 <template>
-  <h1>仁康到家123</h1>
+  <h1>建造师到家</h1>
 </template>
 
 <script>
