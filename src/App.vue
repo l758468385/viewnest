@@ -1,5 +1,5 @@
 <template>
-  <h1>华铭到家</h1>
+  <h1>仁康到家</h1>
 </template>
 
 <script>
