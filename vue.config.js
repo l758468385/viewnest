@@ -5,6 +5,4 @@ module.exports = defineConfig({
     port: 8802
   },
   lintOnSave: false,
-  hot: false,
-  liveReload: false
 })
