@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
   timeout: 10000, // 设置超时时间
 });
 
-axiosInstance.defaults.baseURL = process.env.NODE_ENV === 'production' ? "http:/198.46.251.162:3000" : ''
+// axiosInstance.defaults.baseURL = process.env.NODE_ENV === 'production' ? "http:/198.46.251.162:3000" : ''
 // 跨域请求，允许保存cookie
 axiosInstance.defaults.withCredentials = true
 // 添加请求拦截器
