@@ -1,24 +1,28 @@
 <template>
   <div class="home-wrap">
+
     <span class="app-header">纯爱精选</span>
-    <ul class="video-list">
-      <li
-          v-for="(item, index) in videoList"
-          :key="index"
-          @click="handleVideoClick(item)"
-      >
-        <div class="video-item">
-          <img
-              alt="周处除三害"
-              crossOrigin="anonymous"
-             :src="index === 0 ? 'https://bkimg.cdn.bcebos.com/pic/500fd9f9d72a6059252d3de46663239b033b5ab50c8f?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5,P_20/resize,m_lfit,limit_1,h_1080' :'https://bkimg.cdn.bcebos.com/pic/267f9e2f070828381f305e3ef1c1be014c086e065bda'"
-          />
-          <div class="video-info">
-            <span class="video-desc">{{ item.split("/").pop() }}</span>
+    <NSpin :show="loading">
+      <ul class="video-list">
+        <li
+            v-for="(item, index) in videoList"
+            :key="index"
+            @click="handleVideoClick(item)"
+        >
+          <div class="video-item">
+            <img
+                alt="周处除三害"
+                crossOrigin="anonymous"
+                :src="index === 0 ? 'https://bkimg.cdn.bcebos.com/pic/500fd9f9d72a6059252d3de46663239b033b5ab50c8f?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5,P_20/resize,m_lfit,limit_1,h_1080' :'https://bkimg.cdn.bcebos.com/pic/267f9e2f070828381f305e3ef1c1be014c086e065bda'"
+            />
+            <div class="video-info">
+              <span class="video-desc">{{ item.split("/").pop() }}</span>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </NSpin>
+
   </div>
 </template>
 
@@ -31,12 +35,16 @@ import {useRouter} from "vue-router";
 export default {
   name: "Home",
   setup() {
+    let loading = ref(false);
     let videoList = ref([]);
     const router = useRouter();
     onMounted(() => {
+     loading.value = true
       findVideoList().then((res) => {
         videoList.value = res.data;
-      });
+      }).finally(() => {
+        loading.value = false
+      })
     });
 
     function handleVideoClick(item) {
@@ -51,6 +59,7 @@ export default {
     return {
       videoList,
       handleVideoClick,
+      loading
     };
   },
 };
