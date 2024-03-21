@@ -1,17 +1,17 @@
 <template>
-  <div>
+  <div class="home-wrap">
     <span class="app-header">电影精选</span>
     <ul class="video-list">
       <li
-        v-for="(item, index) in videoList"
-        :key="index"
-        @click="handleVideoClick(item)"
+          v-for="(item, index) in videoList"
+          :key="index"
+          @click="handleVideoClick(item)"
       >
         <div class="video-item">
           <img
-            crossOrigin="”anonymous”"
-            src="https://s44.playwoool.com/wp-content/uploads/2024/03/p2895984381.webp-yfss3"
-            alt="周处除三害"
+              alt="周处除三害"
+              crossOrigin="anonymous"
+              src="https://bkimg.cdn.bcebos.com/pic/267f9e2f070828381f305e3ef1c1be014c086e065bda"
           />
           <div class="video-info">
             <span class="video-desc">{{ item }}</span>
@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import { onMounted } from "vue";
-import { findVideoList } from "../../api/video";
-import { ref } from "vue";
+import {onMounted, ref} from "vue";
+import {findVideoList} from "@/api/video";
 
-import { useRouter } from "vue-router";
+import {useRouter} from "vue-router";
+
 export default {
   name: "Home",
   setup() {
@@ -57,42 +57,57 @@ export default {
 </script>
 
 <style scoped>
+.home-wrap {
+  box-sizing: border-box;
+}
+
 .app-header {
   background-color: #141414;
   color: #fff;
-  border-radius: 5px;
-  width: 160px;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   line-height: 50px;
   letter-spacing: 10px;
-  padding-left: 10px;
+  //padding-left: 10px;
   font-size: 20px;
   margin-bottom: 30px;
+  width: 100%;
+  position: sticky;
 }
 
 .video-list {
   display: flex;
   flex: wrap;
   gap: 30px;
+  padding: 20px;
 }
 
 .video-item {
   width: 310px;
   cursor: pointer;
+  box-shadow: 0 1px 1px 0 #d9d9d9;
+  transition: all .2s linear
 }
+
+.video-item:hover {
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 15px 30px rgba(0,0,0,.1);
+}
+
+
 .video-item img {
-  width: 100%;
+  width: 310px;
   height: 440px;
-  border-radius: 5px;
+
 }
 
 .video-info {
   width: 100%;
   padding: 14px 10px;
   background-color: #fff;
+  box-sizing: border-box;
 }
 
 .video-desc {

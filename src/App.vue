@@ -28,10 +28,11 @@ export default {
 
 <style>
 #app {
-  padding: 20px;
+  //padding: 20px;
   color: rgb(51, 51, 51);
   background: rgb(238, 238, 238);
   font: 13px / 1 微软雅黑, Verdana, Arial, Helvetica, sans-serif;
-  height: 100vh;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 </style>

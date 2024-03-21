@@ -75,6 +75,8 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 20px 0;
+  box-sizing: border-box;
 }
 #video-player {
   border-radius: 10px;
